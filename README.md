@@ -15,7 +15,7 @@ Welcome to Ecommerce API Server, a robust and scalable eCommerce solution built 
 ### 🛠️ Technologies Used
 
 <image src="https://skillicons.dev/icons?i=nest,ts,mongo"/>
-<br><br>
+<br>
 
 NestJS: A progressive Node.js framework for building efficient, reliable, and scalable server-side applications.
 
