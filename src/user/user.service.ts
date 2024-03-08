@@ -7,22 +7,24 @@ import * as bcrypt from 'bcrypt';
 
 @Injectable()
 export class UserService {
-    constructor(@InjectModel('User') private readonly userModel: Model<UserDocument>) {}
+  constructor(
+    @InjectModel('User') private readonly userModel: Model<UserDocument>,
+  ) {}
 
-    async addUser(createUserDTO: CreateUserDTO): Promise<User> {
-        let { username } = createUserDTO;
-        let user = await this.findUser(username);
+  async addUser(createUserDTO: CreateUserDTO): Promise<User> {
+    const { username } = createUserDTO;
+    const user = await this.findUser(username);
 
-        if(user) {
-            throw new ConflictException("User already exits");
-        }
-        const newUser = await this.userModel.create(createUserDTO);
-        newUser.password = await bcrypt.hash(newUser.password, 10);
-        return newUser.save();
+    if (user) {
+      throw new ConflictException('User already exits');
     }
+    const newUser = await this.userModel.create(createUserDTO);
+    newUser.password = await bcrypt.hash(newUser.password, 10);
+    return newUser.save();
+  }
 
-    async findUser(username: string): Promise<User | undefined> {
-        const user = await this.userModel.findOne({username: username});
-        return user;
-    }
+  async findUser(username: string): Promise<User | undefined> {
+    const user = await this.userModel.findOne({ username: username });
+    return user;
+  }
 }

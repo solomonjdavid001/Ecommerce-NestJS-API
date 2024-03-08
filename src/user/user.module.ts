@@ -8,11 +8,11 @@ import { MongooseModule } from '@nestjs/mongoose';
     MongooseModule.forFeature([
       {
         name: 'User',
-        schema: UserSchema
-      }
-    ])
+        schema: UserSchema,
+      },
+    ]),
   ],
   providers: [UserService],
-  exports: [UserService]
+  exports: [UserService],
 })
 export class UserModule {}

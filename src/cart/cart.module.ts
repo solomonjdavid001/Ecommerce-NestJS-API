@@ -9,11 +9,11 @@ import { CartSchema } from './schemas/cart.schema';
     MongooseModule.forFeature([
       {
         name: 'Cart',
-        schema: CartSchema
-      }
-    ])
+        schema: CartSchema,
+      },
+    ]),
   ],
   providers: [CartService],
-  controllers: [CartController]
+  controllers: [CartController],
 })
 export class CartModule {}
